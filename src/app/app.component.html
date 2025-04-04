@@ -38,9 +38,9 @@
       </div>
     </card>
 
-    <card [header]="'UV Index High'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+    <card [header]="'UV Index'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.uv_index_max.at(-1) }}</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().current.uv_index }}</h2>
       </div>
     </card>
 
