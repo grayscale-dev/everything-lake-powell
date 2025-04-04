@@ -1,7 +1,7 @@
-<header class="border-b border-gray-300 bg-white">
+<header class="border-b border-gray-200 bg-white">
   <div class="max-w-6xl m-auto text-xl font-bold px-3 md:px-0 py-4 flex items-center gap-3 text-black">
     <img src="logo.svg" class="h-5" alt="">
-    <h1>
+    <h1 class="text-black">
       Everything L<span class="hidden md:inline">ake </span>P<span class="hidden md:inline">owell</span></h1>
   </div>
 </header>
@@ -13,7 +13,7 @@
 
   <div class="flex flex-wrap md:gap-4 gap-2">
     
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-md flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Temperature</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-md flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">High</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-md flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Low</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
@@ -37,42 +37,42 @@
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">UV Index</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
-        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_min.at(-1)) }}°F</h2>
+        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.uv_index_max.at(-1) }} MAX</h2>
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Precipitation</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
-        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_min.at(-1)) }}°F</h2>
+        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.precipitation_sum.at(-1) }}in</h2>
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg">
+    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunrise</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
-        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_min.at(-1)) }}°F</h2>
+        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.sunrise.at(-1) }}</h2>
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg">
+    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunset</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
-        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_min.at(-1)) }}°F</h2>
+        <h2 *ngIf="currentTempService.currentTemp.value()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.sunset.at(-1) }}</h2>
       </div>
     </div>
 
   </div>
 </main>
 
-<footer class="text-sm text-gray-400 border-t border-gray-300 text-center p-4 mt-4">
+<footer class="text-sm text-gray-400 border-t border-gray-100 text-center p-4 mt-4">
   <p>All weather data is based out of Page, AZ</p>
   <p>Water data courtesy of US Bureau of Reclamation</p>
   <p class="mt-2">Created by <span class="font-semibold">Grayscale Development</span></p>
