@@ -23,7 +23,7 @@ export class AppComponent {
   locations = [
     { name: "Wahweap Marina", coordinates: { lat: 37.010, lng: -111.480 } },
     { name: "Lone Rock Beach", coordinates: { lat: 37.055, lng: -111.493 } },
-    { name: "Antelope Point Marina", coordinates: { lat: 37.070, lng: -111.620 } },
+    { name: "Antelope Point", coordinates: { lat: 37.070, lng: -111.620 } },
     { name: "Warm Creek Bay", coordinates: { lat: 37.025, lng: -111.550 } },
     { name: "Padre Bay", coordinates: { lat: 37.000, lng: -111.530 } },
     { name: "Twinhorn Point", coordinates: { lat: 37.080, lng: -111.600 } },
