@@ -45,10 +45,10 @@
     </div>
 
     <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">UV Index</h1>
+      <h1 class="font-semibold mb-1 text-gray-500 text-sm">UV Index High</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.uv_index_max.at(-1) }} MAX</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.uv_index_max.at(-1) }}</h2>
       </div>
     </div>
 
