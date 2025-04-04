@@ -1,19 +1,23 @@
 <header class="border-b border-gray-200 bg-white">
-  <div class="max-w-6xl m-auto text-xl font-bold px-3 md:px-0 py-4 flex items-center gap-3 text-black">
+  <div class="max-w-6xl m-auto text-xl font-bold px-3 6xl:px-0 py-4 flex items-center gap-3 text-black">
     <img src="logo.svg" class="h-5" alt="">
     <h1 class="text-black">
       Everything L<span class="hidden md:inline">ake </span>P<span class="hidden md:inline">owell</span></h1>
   </div>
 </header>
 
-<main class="max-w-6xl m-auto px-3 md:px-0 py-4">
-  <div class="flex items-center gap-3 mb-4">
+<main class="max-w-6xl m-auto px-3 6xl:px-0 py-4">
+  <div class="flex items-center justify-between mb-4">
     <h1 class="text-2xl font-bold text-black">Todays Weather</h1>
+    <div class="flex gap-2 items-center mb-1 text-gray-600">
+      <p class="text-sm underline">Page, AZ</p>
+      <fa-icon [icon]="faLocationDot"></fa-icon>
+    </div>
   </div>
 
   <div class="flex flex-wrap md:gap-4 gap-2">
     
-    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-md flex-grow">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Temperature</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
@@ -21,7 +25,7 @@
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-md flex-grow">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">High</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
@@ -29,7 +33,7 @@
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-md flex-grow">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Low</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
@@ -53,7 +57,7 @@
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunrise</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />
@@ -61,7 +65,7 @@
       </div>
     </div>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
+    <div class="p-4 rounded-lg border border-gray-100 w-fit shadow-lg flex-grow">
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunset</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="!currentTempService.currentTemp.value()" width="4rem" height="2rem" />

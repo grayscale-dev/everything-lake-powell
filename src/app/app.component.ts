@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TableModule } from 'primeng/table';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,5 +14,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 })
 export class AppComponent {
   math = Math;
+  faLocationDot = faLocationDot;
   currentTempService = inject(CurrentTempService)
 }
