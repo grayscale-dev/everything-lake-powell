@@ -13,7 +13,7 @@
       <p class="text-sm underline">{{location?.name}}</p>
       <fa-icon [icon]="faLocationDot"></fa-icon>
       <p-popover #op>
-        <p-listbox [options]="locations" [(ngModel)]="location" optionLabel="name" styleClass="border-none! shadow-none!" [checkmark]="true" (onChange)="op.toggle($event)" (onChange)="updateWeatherLocation()" />
+        <p-listbox [options]="locations" [(ngModel)]="location" optionLabel="name" styleClass="border-none! shadow-none!" [checkmark]="true" (onChange)="op.toggle($event)" (onChange)="updateWeatherLocation()" scrollHeight="100%" />
       </p-popover>
     </div>
   </div>
