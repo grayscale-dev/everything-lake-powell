@@ -8,11 +8,12 @@ import { faLocationDot, faWater } from '@fortawesome/free-solid-svg-icons';
 import { ListboxModule } from 'primeng/listbox';
 import { FormsModule } from '@angular/forms';
 import { PopoverModule } from 'primeng/popover';
+import { CardComponent } from './shared/components/card.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, SkeletonModule, TableModule, FontAwesomeModule, ListboxModule, FormsModule, PopoverModule],
+  imports: [CommonModule, SkeletonModule, TableModule, FontAwesomeModule, ListboxModule, FormsModule, PopoverModule, CardComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {

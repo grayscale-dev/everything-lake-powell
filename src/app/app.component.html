@@ -18,68 +18,68 @@
     </div>
   </div>
 
-  <div class="flex flex-wrap md:gap-4 gap-2">
-    
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">Temperature</h1>
+  <h2 class="font-bold text-lg mb-2">Current</h2>
+  <div class="flex flex-wrap md:gap-4 gap-2 mb-4">
+    <card [header]="'Temperature'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ math.round(currentTempService.currentTemp.value().current.temperature_2m) }}°F</h2>
+          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ math.round(currentTempService.currentTemp.value().current.temperature_2m) }}°F</h2>
       </div>
-    </div>
+    </card>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">High</h1>
+    <card [header]="'High'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
         <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-red-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_max.at(-1)) }}°F</h2>
       </div>
-    </div>
+    </card>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">Low</h1>
+    <card [header]="'Low'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
         <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_min.at(-1)) }}°F</h2>
       </div>
-    </div>
+    </card>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">UV Index High</h1>
+    <card [header]="'UV Index High'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
         <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.uv_index_max.at(-1) }}</h2>
       </div>
-    </div>
+    </card>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">Precipitation</h1>
+    <card [header]="'Precipitation'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
         <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.precipitation_sum.at(-1) }}in</h2>
       </div>
-    </div>
+    </card>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunrise</h1>
+    <card [header]="'Sunrise'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
         <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.sunrise.at(-1) }}</h2>
       </div>
-    </div>
+    </card>
 
-    <div class="p-4 rounded-lg border border-gray-200 w-fit shadow-lg flex-grow">
-      <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunset</h1>
+    <card [header]="'Sunset'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
         <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.sunset.at(-1) }}</h2>
       </div>
-    </div>
+    </card>
 
   </div>
+
+  <h2 class="font-bold text-lg mb-2">Hourly</h2>
+  <card [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+    <div *ngIf="currentTempService.currentTemp.value() || !currentTempService.currentTemp.isLoading()" class="flex gap-3">
+      <div *ngFor="let hour of currentTempService.currentTemp.value().hourly_next_24" class="p-1 text-center">
+        <h1 class="font-semibold mb-1 text-gray-500 text-xs whitespace-nowrap">{{hour.formatted_date}}</h1>
+          <div class="flex gap-3 items-center text-green-600">
+            <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-sm font-normal text-gray-900 mt-1">{{math.round(hour.temperature_2m)}}°F</h2>
+            <!-- {{hour.uv_index}} -->
+            <!-- {{hour.weather_code}} -->
+          </div>
+      </div>
+    </div>
+  </card>
 </main>
 
-<footer class="text-sm text-gray-400 border-t border-gray-100 text-center p-4 mt-4">
+<footer class="text-sm text-gray-400 border-t border-gray-200 text-center p-4 mt-4">
   <p>Water data courtesy of US Bureau of Reclamation</p>
   <p class="mt-2">Created by <span class="font-semibold">Grayscale Development</span></p>
 </footer>
