@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TableModule } from 'primeng/table';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faWater } from '@fortawesome/free-solid-svg-icons';
 import { ListboxModule } from 'primeng/listbox';
 import { FormsModule } from '@angular/forms';
 import { PopoverModule } from 'primeng/popover';
@@ -18,6 +18,7 @@ import { PopoverModule } from 'primeng/popover';
 export class AppComponent {
   math = Math;
   faLocationDot = faLocationDot;
+  faWater = faWater;
   currentTempService = inject(CurrentTempService)
   locations = [
     { name: "Wahweap Marina", coordinates: { lat: 37.010, lng: -111.480 } },
