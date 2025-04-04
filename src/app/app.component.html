@@ -48,7 +48,7 @@
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">UV Index</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.uv_index_max.at(-1) }} MAX</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.uv_index_max.at(-1) }} MAX</h2>
       </div>
     </div>
 
@@ -56,7 +56,7 @@
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Precipitation</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.precipitation_sum.at(-1) }}in</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.precipitation_sum.at(-1) }}in</h2>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunrise</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.sunrise.at(-1) }}</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.sunrise.at(-1) }}</h2>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
       <h1 class="font-semibold mb-1 text-gray-500 text-sm">Sunset</h1>
       <div class="flex gap-3 items-center text-green-600">
         <p-skeleton *ngIf="currentTempService.currentTemp.isLoading()" width="4rem" height="2rem" />
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ currentTempService.currentTemp.value().daily.sunset.at(-1) }}</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.sunset.at(-1) }}</h2>
       </div>
     </div>
 
