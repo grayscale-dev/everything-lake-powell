@@ -40,13 +40,13 @@
 
     <card [header]="'High'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-red-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_max.at(-1)) }}°F</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-red-700 mt-1">{{ math.round(currentTempService.currentTemp.value().today_object.temp_high) }}°F</h2>
       </div>
     </card>
 
     <card [header]="'Low'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
       <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_min.at(-1)) }}°F</h2>
+        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().today_object.temp_low) }}°F</h2>
       </div>
     </card>
 
