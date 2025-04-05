@@ -7,7 +7,7 @@ import { CommonModule } from "@angular/common";
     imports: [SkeletonModule, CommonModule],
     template: `
     <p-skeleton *ngIf="loading" width="100%" height="6rem" />
-    <div *ngIf="!loading" class="p-4 rounded-lg border border-gray-200 w-full shadow-lg overflow-x-scroll">
+    <div *ngIf="!loading" class="p-4 rounded-lg  w-full shadow-md overflow-x-scroll bg-white">
         <h1 *ngIf="header" class="font-semibold mb-1 text-gray-500 text-sm">{{header}}</h1>
         <ng-content></ng-content>
     </div>
