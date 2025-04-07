@@ -11,6 +11,7 @@ import { PopoverModule } from 'primeng/popover';
 import { CardComponent } from './shared/components/card.component';
 import { IonHeader, IonContent } from "@ionic/angular/standalone";
 import { Platform } from '@ionic/angular/standalone';
+import { WaterDataService } from './core/services/water-data-service';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ export class AppComponent {
   faChevronUp = faChevronUp
   faChevronDown = faChevronDown
   currentTempService = inject(CurrentTempService)
+  waterDataService = inject(WaterDataService)
   locations = [
     { name: "Wahweap Marina", coordinates: { lat: 37.010, lng: -111.480 } },
     { name: "Lone Rock Beach", coordinates: { lat: 37.055, lng: -111.493 } },

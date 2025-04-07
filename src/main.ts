@@ -20,10 +20,7 @@ bootstrapApplication(AppComponent, {
     provideAnimationsAsync(),
     providePrimeNG({ 
         theme: {
-            preset: Aura,
-            options: {
-                darkModeSelector: false || 'none'
-            }
+            preset: Aura
         }
     })
   ],
