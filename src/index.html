@@ -1,18 +1,26 @@
-<!doctype html>
-<html lang="en" class="dark-mode">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Everything LP</title>
-  <base href="/">
-  <meta name="theme-color" content="#FFFFFF"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="utf-8" />
+  <title>Ionic App</title>
+
+  <base href="/" />
+
+  <meta name="color-scheme" content="dark light" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+
+  <!-- add to homescreen for ios -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 </head>
-<body class="relative min-h-screen">
-  <div class="absolute inset-0 bg-gradient-to-t from-red-100 via-transparent to-sky-100 opacity-40"></div>
-  
-  <div class="relative">
-    <app-root></app-root>
-  </div>
+
+<body>
+  <app-root></app-root>
 </body>
+
 </html>

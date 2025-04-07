@@ -1,83 +1,135 @@
-<header class="border-b border-gray-200 bg-white">
-  <div class="max-w-6xl m-auto text-xl font-bold px-3 6xl:px-0 py-4 flex items-center gap-3 text-black">
-    <fa-icon [icon]="faWater" class="text-blue-600"></fa-icon>
-    <h1 class="text-black">
-      Everything <span class="text-orange-600">L<span class="hidden md:inline">ake  </span>P<span class="hidden md:inline">owell</span></span></h1>
-  </div>
-</header>
 
-<main class="max-w-6xl m-auto px-3 6xl:px-0 py-4">
-  <div class="flex items-center justify-between mb-4">
-    <h1 class="text-2xl font-bold text-black">Todays Weather</h1>
-    <div class="flex gap-2 items-center mb-1 text-gray-600 cursor-pointer" (click)="op.toggle($event)">
-      <p class="text-sm underline">{{location?.name}}</p>
-      <fa-icon [icon]="faLocationDot"></fa-icon>
-      <p-popover #op>
-        <p-listbox [options]="locations" [(ngModel)]="location" optionLabel="name" styleClass="border-none! shadow-none!" [checkmark]="true" (onChange)="op.toggle($event)" (onChange)="updateWeatherLocation()" scrollHeight="100%" />
-      </p-popover>
+<ion-content style="--background: transparent;">
+  <header *ngIf="!isIos" class="border-b dark:border-zinc-800">
+    <div class="max-w-6xl m-auto text-xl font-bold px-3 6xl:px-0 py-4 flex items-center gap-3">
+      <fa-icon [icon]="faWater" class="text-blue-400"></fa-icon>
+      <h1 class="dark:text-zinc-200">
+        Everything <span class="text-orange-600">L<span class="hidden md:inline">ake  </span>P<span class="hidden md:inline">owell</span></span></h1>
     </div>
-  </div>
+  </header>
 
-  <card [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-    <div *ngIf="currentTempService.currentTemp.value() || !currentTempService.currentTemp.isLoading()" class="flex gap-3">
-      <div *ngFor="let hour of currentTempService.currentTemp.value().hourly_next_24" class="p-1 text-center">
-        <h1 class="font-semibold mb-1 text-gray-500 text-xs whitespace-nowrap">{{hour.formatted_date}}</h1>
-          <div class="flex gap-3 items-center text-green-600">
-            <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-sm font-normal text-gray-900 mt-1">{{math.round(hour.temperature_2m)}}°F</h2>
-            <!-- {{hour.uv_index}} -->
-            <!-- {{hour.weather_code}} -->
+  <main class="max-w-6xl m-auto px-3 6xl:px-0 py-4 pt-20" [ngClass]="{'pt-20': isIos}">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-2xl font-bold dark:text-zinc-200">Todays Weather</h1>
+      <div class="flex gap-2 items-center dark:text-zinc-300 text-zinc-500 cursor-pointer" (click)="op.toggle($event)">
+        <p class="text-sm">{{location?.name}}</p>
+        <fa-icon [icon]="faLocationDot"></fa-icon>
+        <p-popover #op>
+          <p-listbox [options]="locations" [(ngModel)]="location" optionLabel="name" styleClass="!border-none !shadow-none -m-2" listStyleClass="dark:bg-zinc-900" [checkmark]="true" (onChange)="op.toggle($event)" (onChange)="updateWeatherLocation()" scrollHeight="100%" />
+        </p-popover>
+      </div>
+    </div>
+
+    <card [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+      <div *ngIf="currentTempService.currentTemp.value() || !currentTempService.currentTemp.isLoading()" class="flex gap-3">
+        <div *ngFor="let hour of currentTempService.currentTemp.value().hourly_next_24" class="p-2 text-center">
+          <h1 class="font-semibold mb-1 text-zinc-400  text-xs whitespace-nowrap">{{hour.formatted_date}}</h1>
+            <div class="flex gap-3 items-center">
+              <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-sm font-normal dark:text-gray-200 mt-1">{{math.round(hour.temperature_2m)}}°</h2>
+              <!-- {{hour.uv_index}} -->
+              <!-- {{hour.weather_code}} -->
+            </div>
+        </div>
+      </div>
+    </card>
+
+    <div class="flex flex-wrap md:gap-4 gap-2 mt-3">
+      <card [header]="'Temperature'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+        <div class="flex gap-3 items-center">
+            <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal dark:text-zinc-200 mt-1">{{ math.round(currentTempService.currentTemp.value().current.temperature_2m) }}°</h2>
+        </div>
+      </card>
+
+      <card [header]="'High'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+        <div class="flex gap-3 items-center">
+          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-red-400 mt-1">{{ math.round(currentTempService.currentTemp.value().today_object.temp_high) }}°</h2>
+        </div>
+      </card>
+
+      <card [header]="'Low'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+        <div class="flex gap-3 items-center">
+          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-400 mt-1">{{ math.round(currentTempService.currentTemp.value().today_object.temp_low) }}°</h2>
+        </div>
+      </card>
+
+      <card [header]="'UV Index'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+        <div class="flex gap-3 items-center">
+          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal dark:text-zinc-200 mt-1">{{ currentTempService.currentTemp.value().current.uv_index }}</h2>
+        </div>
+      </card>
+
+      <card [header]="'Precipitation'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+        <div class="flex gap-3 items-center">
+          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal dark:text-zinc-200 mt-1">{{ currentTempService.currentTemp.value().daily.precipitation_sum.at(-1) }}in</h2>
+        </div>
+      </card>
+
+      <card [header]="'Sunrise'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+        <div class="flex gap-3 items-center">
+          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal dark:text-zinc-200 mt-1">{{ currentTempService.currentTemp.value().today_object.sunrise }}</h2>
+        </div>
+      </card>
+
+      <card [header]="'Sunset'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
+        <div class="flex gap-3 items-center">
+          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal dark:text-zinc-200 mt-1">{{ currentTempService.currentTemp.value().today_object.sunset }}</h2>
+        </div>
+      </card>
+
+    </div>
+
+    <h1 class="text-2xl font-bold dark:text-zinc-200 mt-6 mb-4">Next 7 Days</h1>
+    <p-skeleton *ngIf="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()" width="100%" height="6rem" />
+    <div *ngIf="currentTempService.currentTemp.value() || !currentTempService.currentTemp.isLoading()" class="flex gap-3 overflow-x-scroll pb-5" [ngClass]="{'no-scrollbar': isIos}">
+        <card  [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()" *ngFor="let day of currentTempService.currentTemp.value().daily_next_7_days" class="whitespace-nowrap text-center dark:text-zinc-200">
+          <div class="flex text-sm justify-between">
+            <p class="pr-1 text-red-400">{{day.temp_high}}°</p>
+            <p class="text-sm font-semibold">{{day.weekday}}</p>
+            <p class="pl-1 text-blue-400">{{day.temp_low}}°</p>
           </div>
-      </div>
+          <div class="flex text-sm justify-between">
+            <p class="pr-1">{{day.uv_index_max}}<fa-icon [icon]="faSun" class="pl-1 text-gray-400 text-xs"></fa-icon></p>
+            <p class="pl-1 t"><fa-icon [icon]="faDroplet" class="pr-1 text-gray-400 text-xs"></fa-icon>{{day.precipitation_sum}}</p>
+          </div>
+          <div class="flex text-sm justify-between">
+            <p class="pr-1"><fa-icon [icon]="faChevronUp" class="pr-1 text-gray-400 text-xs"></fa-icon> {{day.sunrise}}</p>
+            <p class="pl-1 t"><fa-icon [icon]="faChevronDown" class="pr-1 text-gray-400 text-xs"></fa-icon> {{day.sunset}}</p>
+          </div>
+        </card>
     </div>
-  </card>
 
-  <div class="flex flex-wrap md:gap-4 gap-2 mt-4">
-    <card [header]="'Temperature'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-      <div class="flex gap-3 items-center text-green-600">
-          <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ math.round(currentTempService.currentTemp.value().current.temperature_2m) }}°F</h2>
-      </div>
-    </card>
-
-    <card [header]="'High'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-      <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-red-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_max.at(-1)) }}°F</h2>
-      </div>
-    </card>
-
-    <card [header]="'Low'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-      <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-blue-700 mt-1">{{ math.round(currentTempService.currentTemp.value().daily.temperature_2m_min.at(-1)) }}°F</h2>
-      </div>
-    </card>
-
-    <card [header]="'UV Index'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-      <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().current.uv_index }}</h2>
-      </div>
-    </card>
-
-    <card [header]="'Precipitation'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-      <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.precipitation_sum.at(-1) }}in</h2>
-      </div>
-    </card>
-
-    <card [header]="'Sunrise'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-      <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.sunrise.at(-1) }}</h2>
-      </div>
-    </card>
-
-    <card [header]="'Sunset'" class="flex-grow" [loading]="!currentTempService.currentTemp.value() || currentTempService.currentTemp.isLoading()">
-      <div class="flex gap-3 items-center text-green-600">
-        <h2 *ngIf="!currentTempService.currentTemp.isLoading()" class="text-xl font-normal text-gray-900 mt-1">{{ currentTempService.currentTemp.value().daily.sunset.at(-1) }}</h2>
-      </div>
-    </card>
-
+    <h1 class="text-2xl font-bold dark:text-zinc-200 mt-6 mb-4">Water Data</h1>
+    <p-skeleton *ngIf="!waterDataService.dataResource.value() || waterDataService.dataResource.isLoading()" width="100%" height="6rem" />
+    <div *ngIf="waterDataService.dataResource.value() && !waterDataService.dataResource.isLoading()" class="flex gap-3 overflow-x-scroll pb-5" [ngClass]="{'no-scrollbar': isIos}">
+      <card class="w-full" [loading]="!waterDataService.dataResource.value() || waterDataService.dataResource.isLoading()">
+        <p-table [value]="waterDataService.dataResource.value() || []" class="text-sm whitespace-nowrap">
+          <ng-template #header>
+              <tr>
+                  <th>Date</th>
+                  <th>Change</th>
+                  <th>Elevation</th>
+                  <th>Content</th>
+                  <th>Inflow (cfs)</th>
+                  <th>Outflow (cfs)</th>
+              </tr>
+          </ng-template>
+          <ng-template #body let-row>
+              <tr>
+                  <td>{{ row.date }}</td>
+                  <td [ngClass]="{'text-green-400': row.change > 0, 'text-red-400': row.change < 0}">{{ row.change }}</td>
+                  <td>{{ row.elevation }}</td>
+                  <td>{{ row.content }}</td>
+                  <td>{{ row.inflow }}</td>
+                  <td>{{ row.outflow }}</td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </card>
   </div>
-</main>
+  </main>
 
-<footer class="text-sm text-gray-400 border-t border-gray-200 text-center p-4 mt-4">
-  <p>Water data courtesy of US Bureau of Reclamation</p>
-  <p class="mt-2">Created by <span class="font-semibold">Grayscale Development</span></p>
-</footer>
+  <footer *ngIf="!isIos" class="text-sm dark:text-zinc-600 text-zinc-400 border-t dark:border-zinc-800 text-center p-4 mt-4">
+    <p>Water data courtesy of US Bureau of Reclamation</p>
+    <p class="mt-2">Created by <span class="font-semibold">Grayscale Development</span></p>
+  </footer>
+</ion-content>
